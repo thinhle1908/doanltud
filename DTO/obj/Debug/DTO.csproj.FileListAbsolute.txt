@@ -1,0 +1,6 @@
+C:\Users\thinh\source\repos\Doan_LTUD\DTO\bin\Debug\DTO.dll
+C:\Users\thinh\source\repos\Doan_LTUD\DTO\bin\Debug\DTO.pdb
+C:\Users\thinh\source\repos\Doan_LTUD\DTO\obj\Debug\DTO.csproj.AssemblyReference.cache
+C:\Users\thinh\source\repos\Doan_LTUD\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache
+C:\Users\thinh\source\repos\Doan_LTUD\DTO\obj\Debug\DTO.dll
+C:\Users\thinh\source\repos\Doan_LTUD\DTO\obj\Debug\DTO.pdb
