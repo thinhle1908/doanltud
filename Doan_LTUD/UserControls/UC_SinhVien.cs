@@ -29,12 +29,14 @@ namespace Doan_LTUD.UserControls
             dataGridView1.Columns[1].HeaderText = "Họ";
             dataGridView1.Columns[2].HeaderText = "Tên";
             dataGridView1.Columns[3].HeaderText = "Giới tính";
-            dataGridView1.Columns[4].HeaderText = "Dân tộc";
-            dataGridView1.Columns[5].HeaderText = "Địa chỉ";
-            dataGridView1.Columns[6].HeaderText = "Quê quán";
-            dataGridView1.Columns[7].HeaderText = "Số điện thoại";
-            dataGridView1.Columns[8].HeaderText = "Email";
-            dataGridView1.Columns[9].HeaderText = "Khóa học";
+            dataGridView1.Columns[4].HeaderText = "Ngày sinh";
+            dataGridView1.Columns[5].HeaderText = "Dân tộc";
+            dataGridView1.Columns[6].HeaderText = "Địa chỉ";
+            dataGridView1.Columns[7].HeaderText = "Quê quán";
+            dataGridView1.Columns[8].HeaderText = "Số điện thoại";
+            dataGridView1.Columns[9].HeaderText = "Email";
+            dataGridView1.Columns[10].HeaderText = "Khóa học";
+            dataGridView1.Columns[11].HeaderText = "Khoa";
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -120,9 +122,9 @@ namespace Doan_LTUD.UserControls
             string email = dataGridView1.Rows[iDong].Cells[8].Value.ToString();
             int khoahoc = int.Parse(dataGridView1.Rows[iDong].Cells[9].Value.ToString());
             UC_EditSinhVien uC = new UC_EditSinhVien();
-            clsSinhVien sinhvien = new clsSinhVien(masv,ho,ten,gioitinh,dantoc,diachi,quequan,sodienthoai,email,khoahoc);
+            //clsSinhVien sinhvien = new clsSinhVien(masv,ho,ten,gioitinh,dantoc,diachi,quequan,sodienthoai,email,khoahoc);
             //Ẩn UC_EditSinhVien để hiển thị ra UC_EditSinhVien
-           uC.SinhVien = sinhvien;
+           //uC.SinhVien = sinhvien;
             this.Parent.Controls.Add(uC);
             uC.BringToFront();
         }

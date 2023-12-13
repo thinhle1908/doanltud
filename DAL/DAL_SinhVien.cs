@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class DAL_SinhVien:connectDB
+    public class DAL_SinhVien : connectDB
     {
         public DataTable getAllSinhVien()
         {
@@ -43,7 +43,7 @@ namespace DAL
             return dtUser;
 
         }
-        public int deleteSinhVien (string sMaSinhVien)
+        public int deleteSinhVien(string sMaSinhVien)
         {
             int iKetQua;
             string tenSP = "sp_deletesinhvien";
@@ -55,5 +55,39 @@ namespace DAL
             iKetQua = cmdSQL.ExecuteNonQuery();
             return iKetQua;
         }
+        public int addSinhVien(clsSinhVien sinhVien)
+        {
+            string tenSP = "sp_addSinhVien";
+            SqlCommand cmdSQL = new SqlCommand(tenSP, conn);
+            cmdSQL.CommandType = CommandType.StoredProcedure;
+            cmdSQL.Parameters.AddWithValue("@MASV", sinhVien.MASV);
+            cmdSQL.Parameters.AddWithValue("@HO", sinhVien.HO);
+            cmdSQL.Parameters.AddWithValue("@TEN", sinhVien.TEN);
+            cmdSQL.Parameters.AddWithValue("@GIOITINH", sinhVien.GIOITINH);
+            cmdSQL.Parameters.AddWithValue("@DANTOC", sinhVien.DANTOC);
+            cmdSQL.Parameters.AddWithValue("@DIACHI", sinhVien.DIACHI);
+            cmdSQL.Parameters.AddWithValue("@QUEQUAN", sinhVien.QUEQUAN);
+            cmdSQL.Parameters.AddWithValue("@SODIENTHOAI", sinhVien.SODIENTHOAI);
+            cmdSQL.Parameters.AddWithValue("@EMAIL", sinhVien.EMAIL);
+            cmdSQL.Parameters.AddWithValue("@KHOAHOC", sinhVien.KHOAHOC);
+
+
+            int result = 0;
+            try
+            {
+                if (cmdSQL.ExecuteNonQuery() >= 0)
+                {
+                    result = 1;
+                }
+
+            }
+            catch 
+            {
+                result = 0;
+            }
+
+            return result;
+        }
+        
     }
 }

@@ -38,5 +38,9 @@ namespace BLL
             }
             return iKetQua;
         }
+        public int addSinhVien (clsSinhVien sinhVien)
+        {
+            return dal_sinhvien.addSinhVien(sinhVien);
+        }
     }
 }
