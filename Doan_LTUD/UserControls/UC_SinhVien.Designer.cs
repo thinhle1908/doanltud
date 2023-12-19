@@ -128,6 +128,7 @@
             this.dataGridView1.GridColor = System.Drawing.SystemColors.ControlDarkDark;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 40;
@@ -136,6 +137,7 @@
             this.dataGridView1.Size = new System.Drawing.Size(1227, 640);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.DoubleClick += new System.EventHandler(this.dataGridView1_DoubleClick);
             // 
             // panel2
             // 
@@ -157,9 +159,9 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(29, 59);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(212, 20);
+            this.label2.Size = new System.Drawing.Size(385, 20);
             this.label2.TabIndex = 3;
-            this.label2.Text = "Nhập tên sinh viên muốn tìm:";
+            this.label2.Text = "Nhập họ tên sinh viên hoặc mã số sinh viên muốn tìm:";
             // 
             // btnSua
             // 

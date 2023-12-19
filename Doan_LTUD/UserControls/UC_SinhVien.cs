@@ -25,18 +25,21 @@ namespace Doan_LTUD.UserControls
             
             dataGridView1.DataSource = bllSinhVien.getSinhVien();
 
-            dataGridView1.Columns[0].HeaderText = "Mã sinh viên";
-            dataGridView1.Columns[1].HeaderText = "Họ";
-            dataGridView1.Columns[2].HeaderText = "Tên";
-            dataGridView1.Columns[3].HeaderText = "Giới tính";
-            dataGridView1.Columns[4].HeaderText = "Ngày sinh";
-            dataGridView1.Columns[5].HeaderText = "Dân tộc";
-            dataGridView1.Columns[6].HeaderText = "Địa chỉ";
-            dataGridView1.Columns[7].HeaderText = "Quê quán";
-            dataGridView1.Columns[8].HeaderText = "Số điện thoại";
-            dataGridView1.Columns[9].HeaderText = "Email";
-            dataGridView1.Columns[10].HeaderText = "Khóa học";
-            dataGridView1.Columns[11].HeaderText = "Khoa";
+            dataGridView1.Columns[0].Visible = false;
+            dataGridView1.Columns[1].HeaderText = "Mã sinh viên";
+            dataGridView1.Columns[2].HeaderText = "Họ";
+            dataGridView1.Columns[3].HeaderText = "Tên";
+            dataGridView1.Columns[4].HeaderText = "Giới tính";
+            dataGridView1.Columns[5].HeaderText = "Ngày sinh";
+            dataGridView1.Columns[6].HeaderText = "Dân tộc";
+            dataGridView1.Columns[7].HeaderText = "Địa chỉ";
+            dataGridView1.Columns[8].HeaderText = "Quê quán";
+            dataGridView1.Columns[9].HeaderText = "Số điện thoại";
+            dataGridView1.Columns[10].HeaderText = "Email";
+            dataGridView1.Columns[11].HeaderText = "Khóa học";
+            dataGridView1.Columns[12].Visible = false;
+            dataGridView1.Columns[13].HeaderText = "Chuyên ngành";
+           
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -64,18 +67,18 @@ namespace Doan_LTUD.UserControls
             int  iDong = int.Parse(dataGridView1.SelectedRows[0].Index.ToString());
           
 
-            if (dataGridView1.SelectedRows.Count < 1  || dataGridView1.Rows[iDong].Cells[0].Value == null )
+            if (dataGridView1.SelectedRows.Count < 1  || dataGridView1.Rows[iDong].Cells["MASV"].Value == null )
             {
                 MessageBox.Show("Vui lòng chọn sinh viên trên bảng để xóa", "Thông báo");
                 return;
             }
 
-            string masv = dataGridView1.Rows[iDong].Cells[0].Value.ToString();
-            string hoten = dataGridView1.Rows[iDong].Cells[1].Value.ToString()+" "+ dataGridView1.Rows[iDong].Cells[2].Value.ToString();
+            string masv = dataGridView1.Rows[iDong].Cells["MASV"].Value.ToString();
+            string hoten = dataGridView1.Rows[iDong].Cells["HO"].Value.ToString()+" "+ dataGridView1.Rows[iDong].Cells["TEN"].Value.ToString();
             DialogResult r = MessageBox.Show($"Bạn có muốn xóa sinh viên {hoten}\ncó mã là {masv}này không ?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
             if (r == DialogResult.Yes)
             {
-                if (bllSinhVien.deleteSinhVien(dataGridView1.Rows[iDong].Cells[0].Value.ToString()) == 0)
+                if (bllSinhVien.deleteSinhVien(dataGridView1.Rows[iDong].Cells["MASV"].Value.ToString()) == 0)
                 {
                     MessageBox.Show("Có lỗi trong quá trình xóa sinh viên vui lòng kiểm tra lại dữ liệu");
                 }
@@ -93,9 +96,12 @@ namespace Doan_LTUD.UserControls
         {
             UC_AddSinhVien uC = new UC_AddSinhVien();
             //Ẩn UC_SinhVien để hiển thị ra UC_AddSinhVien
+
             
             this.Parent.Controls.Add(uC);
-            uC.BringToFront();
+            this.Parent.Controls.Remove(this);
+
+
         }
 
         private void btnSua_Click(object sender, EventArgs e)
@@ -111,22 +117,31 @@ namespace Doan_LTUD.UserControls
                 MessageBox.Show("Vui lòng chọn sinh viên trên bảng để để sửa", "Thông báo");
                 return;
             }
-            string masv = dataGridView1.Rows[iDong].Cells[0].Value.ToString();
-            string ho = dataGridView1.Rows[iDong].Cells[1].Value.ToString();
-            string ten =  dataGridView1.Rows[iDong].Cells[2].Value.ToString();
-            string gioitinh = dataGridView1.Rows[iDong].Cells[3].Value.ToString();
-            string dantoc = dataGridView1.Rows[iDong].Cells[4].Value.ToString();
-            string diachi = dataGridView1.Rows[iDong].Cells[5].Value.ToString();
-            string quequan = dataGridView1.Rows[iDong].Cells[6].Value.ToString();
-            string sodienthoai = dataGridView1.Rows[iDong].Cells[7].Value.ToString();
-            string email = dataGridView1.Rows[iDong].Cells[8].Value.ToString();
-            int khoahoc = int.Parse(dataGridView1.Rows[iDong].Cells[9].Value.ToString());
+            string masv = dataGridView1.Rows[iDong].Cells["MASV"].Value.ToString();
+            string ho = dataGridView1.Rows[iDong].Cells["HO"].Value.ToString();
+            string ten =  dataGridView1.Rows[iDong].Cells["TEN"].Value.ToString();
+            string gioitinh = dataGridView1.Rows[iDong].Cells["GIOITINH"].Value.ToString();
+            DateTime ngaySinh = DateTime.Parse(dataGridView1.Rows[iDong].Cells["NGAYSINH"].Value.ToString());
+            string dantoc = dataGridView1.Rows[iDong].Cells["DANTOC"].Value.ToString();
+            string diachi = dataGridView1.Rows[iDong].Cells["DIACHI"].Value.ToString();
+            string quequan = dataGridView1.Rows[iDong].Cells["QUEQUAN"].Value.ToString();
+            string sodienthoai = dataGridView1.Rows[iDong].Cells["SODIENTHOAI"].Value.ToString();
+            string email = dataGridView1.Rows[iDong].Cells["EMAIL"].Value.ToString();
+            int khoahoc = int.Parse(dataGridView1.Rows[iDong].Cells["KHOAHOC"].Value.ToString());
+            string manganh = dataGridView1.Rows[iDong].Cells["MANGANH"].Value.ToString();
             UC_EditSinhVien uC = new UC_EditSinhVien();
-            //clsSinhVien sinhvien = new clsSinhVien(masv,ho,ten,gioitinh,dantoc,diachi,quequan,sodienthoai,email,khoahoc);
+            clsSinhVien sinhvien = new clsSinhVien(masv,ho,ten,gioitinh,ngaySinh,dantoc,diachi,quequan,sodienthoai,email,khoahoc, manganh);
             //Ẩn UC_EditSinhVien để hiển thị ra UC_EditSinhVien
-           //uC.SinhVien = sinhvien;
+            uC.SinhVien = sinhvien;
             this.Parent.Controls.Add(uC);
+            this.Parent.Controls.Remove(this);
             uC.BringToFront();
         }
+
+        private void dataGridView1_DoubleClick(object sender, EventArgs e)
+        {
+            btnSua.PerformClick();
+        }
+
     }
 }
