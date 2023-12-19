@@ -38,9 +38,32 @@ namespace BLL
             }
             return iKetQua;
         }
-        public int addSinhVien (clsSinhVien sinhVien)
+        public int addSinhVien(string HO,string TEN,string GIOITINH,DateTime NGAYSINH,string DANTOC,string DIACHI,string QUEQUAN,string SODIENTHOAI,
+         string EMAIL,string MANGANH)
         {
+            string MASV = "211";
+
+            int KHOAHOC = int.Parse(DateTime.Today.Year.ToString().Substring(2,2));
+           
+            //Lấy id cuối cùng của bảng sinh viên
+            DataTable dt = dal_sinhvien.getLastIDSinhVien();
+          
+            //Lấy id của sinh viên cuối cùng +1 ra mã sinh viên mới
+            int id = int.Parse(dt.Rows[0]["id"].ToString());
+            id += 1;
+          
+            //Xử lý mã sinh viên
+            MASV = String.Concat(KHOAHOC, MASV, MANGANH.Substring(0,2), id.ToString("0000")).Trim();
+
+            clsSinhVien sinhVien = new clsSinhVien(MASV, HO, TEN, GIOITINH, NGAYSINH, DANTOC, DIACHI, QUEQUAN, SODIENTHOAI, EMAIL, KHOAHOC, MANGANH);
             return dal_sinhvien.addSinhVien(sinhVien);
+        }
+        public int editSinhVien(string MASV,string HO, string TEN, string GIOITINH, DateTime NGAYSINH, string DANTOC, string DIACHI, string QUEQUAN, string SODIENTHOAI,
+         string EMAIL, string MANGANH, int KHOAHOC)
+        {
+
+            clsSinhVien sinhVien = new clsSinhVien(MASV, HO, TEN, GIOITINH, NGAYSINH, DANTOC, DIACHI, QUEQUAN, SODIENTHOAI, EMAIL, KHOAHOC, MANGANH);
+            return dal_sinhvien.editSinhVien(sinhVien);
         }
     }
 }

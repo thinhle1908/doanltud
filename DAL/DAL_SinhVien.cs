@@ -64,12 +64,14 @@ namespace DAL
             cmdSQL.Parameters.AddWithValue("@HO", sinhVien.HO);
             cmdSQL.Parameters.AddWithValue("@TEN", sinhVien.TEN);
             cmdSQL.Parameters.AddWithValue("@GIOITINH", sinhVien.GIOITINH);
+            cmdSQL.Parameters.AddWithValue("@NGAYSINH", sinhVien.NGAYSINH);
             cmdSQL.Parameters.AddWithValue("@DANTOC", sinhVien.DANTOC);
             cmdSQL.Parameters.AddWithValue("@DIACHI", sinhVien.DIACHI);
             cmdSQL.Parameters.AddWithValue("@QUEQUAN", sinhVien.QUEQUAN);
             cmdSQL.Parameters.AddWithValue("@SODIENTHOAI", sinhVien.SODIENTHOAI);
             cmdSQL.Parameters.AddWithValue("@EMAIL", sinhVien.EMAIL);
             cmdSQL.Parameters.AddWithValue("@KHOAHOC", sinhVien.KHOAHOC);
+            cmdSQL.Parameters.AddWithValue("@MANGANH", sinhVien.MANGANH);
 
 
             int result = 0;
@@ -88,6 +90,54 @@ namespace DAL
 
             return result;
         }
-        
+        public DataTable getLastIDSinhVien()
+        {
+            DataTable dtUser = new DataTable();
+            SqlDataAdapter daUser;
+            string tenSP = "sp_getLastIDSinhVien";
+
+            SqlCommand cmdSQL = new SqlCommand(tenSP, conn);
+            cmdSQL.CommandType = CommandType.StoredProcedure;
+
+
+            daUser = new SqlDataAdapter(cmdSQL);
+            daUser.Fill(dtUser);
+            return dtUser;
+
+        }
+        public int editSinhVien(clsSinhVien sinhVien)
+        {
+            string tenSP = "sp_editSinhVien";
+            SqlCommand cmdSQL = new SqlCommand(tenSP, conn);
+            cmdSQL.CommandType = CommandType.StoredProcedure;
+            cmdSQL.Parameters.AddWithValue("@MASV", sinhVien.MASV);
+            cmdSQL.Parameters.AddWithValue("@HO", sinhVien.HO);
+            cmdSQL.Parameters.AddWithValue("@TEN", sinhVien.TEN);
+            cmdSQL.Parameters.AddWithValue("@GIOITINH", sinhVien.GIOITINH);
+            cmdSQL.Parameters.AddWithValue("@NGAYSINH", sinhVien.NGAYSINH);
+            cmdSQL.Parameters.AddWithValue("@DANTOC", sinhVien.DANTOC);
+            cmdSQL.Parameters.AddWithValue("@DIACHI", sinhVien.DIACHI);
+            cmdSQL.Parameters.AddWithValue("@QUEQUAN", sinhVien.QUEQUAN);
+            cmdSQL.Parameters.AddWithValue("@SODIENTHOAI", sinhVien.SODIENTHOAI);
+            cmdSQL.Parameters.AddWithValue("@EMAIL", sinhVien.EMAIL);
+
+            int result = 0;
+            try
+            {
+                if (cmdSQL.ExecuteNonQuery() >= 0)
+                {
+
+                    result = 1;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+                result = 0;
+            }
+
+            return result;
+        }
     }
 }

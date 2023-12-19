@@ -20,22 +20,22 @@ namespace DTO
 	  private string _SODIENTHOAI;
 	  private string _EMAIL;
 	  private int _KHOAHOC;
-      private string _MAKHOA;
+      private string _MANGANH;
 
-        public clsSinhVien(string mASV, string hO, string tEN, string gIOITINH, DateTime nGAYSINH, string dANTOC, string dIACHI, string qUEQUAN, string sODIENTHOAI, string eMAIL, int kHOAHOC, string mAKHOA)
+        public clsSinhVien(string mASV, string hO, string tEN, string gIOITINH, DateTime nGAYSINH, string dANTOC, string dIACHI, string qUEQUAN, string sODIENTHOAI, string eMAIL, int kHOAHOC, string mANGANH)
         {
-            MASV = mASV;
-            HO = hO;
-            TEN = tEN;
-            GIOITINH = gIOITINH;
-            NGAYSINH = nGAYSINH;
-            DANTOC = dANTOC;
-            DIACHI = dIACHI;
-            QUEQUAN = qUEQUAN;
-            SODIENTHOAI = sODIENTHOAI;
-            EMAIL = eMAIL;
-            KHOAHOC = kHOAHOC;
-            MAKHOA = mAKHOA;
+            _MASV = mASV;
+            _HO = hO;
+            _TEN = tEN;
+            _GIOITINH = gIOITINH;
+            _NGAYSINH = nGAYSINH;
+            _DANTOC = dANTOC;
+            _DIACHI = dIACHI;
+            _QUEQUAN = qUEQUAN;
+            _SODIENTHOAI = sODIENTHOAI;
+            _EMAIL = eMAIL;
+            _KHOAHOC = kHOAHOC;
+            _MANGANH = mANGANH;
         }
 
         public string MASV { get => _MASV; set => _MASV = value; }
@@ -49,6 +49,6 @@ namespace DTO
         public string SODIENTHOAI { get => _SODIENTHOAI; set => _SODIENTHOAI = value; }
         public string EMAIL { get => _EMAIL; set => _EMAIL = value; }
         public int KHOAHOC { get => _KHOAHOC; set => _KHOAHOC = value; }
-        public string MAKHOA { get => _MAKHOA; set => _MAKHOA = value; }
+        public string MANGANH { get => _MANGANH; set => _MANGANH = value; }
     }
 }
