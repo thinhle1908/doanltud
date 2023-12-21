@@ -20,3 +20,6 @@ C:\Users\thinh\source\repos\Doan_LTUD\Doan_LTUD\obj\Debug\GUI.csproj.CopyComplet
 C:\Users\thinh\source\repos\Doan_LTUD\Doan_LTUD\obj\Debug\Doan_LTUD.exe
 C:\Users\thinh\source\repos\Doan_LTUD\Doan_LTUD\obj\Debug\Doan_LTUD.pdb
 C:\Users\thinh\source\repos\Doan_LTUD\Doan_LTUD\obj\Debug\Doan_LTUD.UserControls.UC_AddSinhVien.resources
+C:\Users\thinh\source\repos\Doan_LTUD\Doan_LTUD\obj\Debug\Doan_LTUD.UserControls.UC_AddMonHoc.resources
+C:\Users\thinh\source\repos\Doan_LTUD\Doan_LTUD\obj\Debug\Doan_LTUD.UserControls.UC_EditMonHoccs.resources
+C:\Users\thinh\source\repos\Doan_LTUD\Doan_LTUD\obj\Debug\Doan_LTUD.UserControls.UC_MonHoc.resources

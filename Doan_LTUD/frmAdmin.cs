@@ -72,5 +72,11 @@ namespace Doan_LTUD
             UC_SinhVien uc = new UC_SinhVien();
             addUserControl(uc);
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            UC_MonHoc uc = new UC_MonHoc();
+            addUserControl(uc);
+        }
     }
 }
