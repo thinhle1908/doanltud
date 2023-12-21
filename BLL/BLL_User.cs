@@ -48,5 +48,10 @@ namespace BLL
             }
             return 100;
         }
+        public int createUser(string sTenDangNhap,string sMatKhau)
+        {
+            clsUser user  =  new clsUser(sTenDangNhap,sMatKhau);
+            return dal_User.createUser(user);
+        }
     }
 }

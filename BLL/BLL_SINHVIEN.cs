@@ -38,7 +38,7 @@ namespace BLL
             }
             return iKetQua;
         }
-        public int addSinhVien(string HO,string TEN,string GIOITINH,DateTime NGAYSINH,string DANTOC,string DIACHI,string QUEQUAN,string SODIENTHOAI,
+        public string addSinhVien(string HO,string TEN,string GIOITINH,DateTime NGAYSINH,string DANTOC,string DIACHI,string QUEQUAN,string SODIENTHOAI,
          string EMAIL,string MANGANH)
         {
             string MASV = "211";
@@ -56,7 +56,14 @@ namespace BLL
             MASV = String.Concat(KHOAHOC, MASV, MANGANH.Substring(0,2), id.ToString("0000")).Trim();
 
             clsSinhVien sinhVien = new clsSinhVien(MASV, HO, TEN, GIOITINH, NGAYSINH, DANTOC, DIACHI, QUEQUAN, SODIENTHOAI, EMAIL, KHOAHOC, MANGANH);
-            return dal_sinhvien.addSinhVien(sinhVien);
+            if (dal_sinhvien.addSinhVien(sinhVien) == 1)
+            {
+                return MASV;
+            }
+            else
+            {
+                return "0";
+            }
         }
         public int editSinhVien(string MASV,string HO, string TEN, string GIOITINH, DateTime NGAYSINH, string DANTOC, string DIACHI, string QUEQUAN, string SODIENTHOAI,
          string EMAIL, string MANGANH, int KHOAHOC)

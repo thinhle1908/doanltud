@@ -23,6 +23,7 @@ namespace Doan_LTUD.UserControls
         }
         BLL_SINHVIEN bLL_SINHVIEN = new BLL_SINHVIEN();
         BLL_NGANH bll_Nganh = new BLL_NGANH();
+        BLL_User  bll_User = new BLL_User();
         private void UC_AddSinhVien_Load(object sender, EventArgs e)
         {
             cboGioiTinh.SelectedIndex = 0;
@@ -194,10 +195,12 @@ namespace Doan_LTUD.UserControls
                 return;
             }
 
-            if (bLL_SINHVIEN.addSinhVien(sHo, sTen, sGioiTinh, dtpNgaySinh.Value.Date, sDanToc, sDiaChi, sQueQuan, sSDT, sEmail, scboNganh)==1)
+            //Tiến hành thêm dữ liệu vào bảng  sinh  viên nếu thành công  trả về mã sinh viên
+            string maSV = bLL_SINHVIEN.addSinhVien(sHo, sTen, sGioiTinh, dtpNgaySinh.Value.Date, sDanToc, sDiaChi, sQueQuan, sSDT, sEmail, scboNganh);
+            if (maSV != "0")
             {
-                MessageBox.Show("Thêm sinh viên thành công","Thông báo");
-
+                MessageBox.Show($"Thêm sinh viên thành công sinh viên mới có mã là {maSV}","Thông báo");
+                bll_User.createUser(maSV, maSV);
                 UC_SinhVien uC = new UC_SinhVien();
                 this.Parent.Controls.Add(uC);
                 this.Parent.Controls.Remove(this);

@@ -27,5 +27,31 @@ namespace DAL
             return dtUser;
 
         }
+        public int createUser(clsUser clsUser)
+        {
+            string tenSP = "sp_createUser";
+            SqlCommand cmdSQL = new SqlCommand(tenSP, conn);
+            cmdSQL.CommandType = CommandType.StoredProcedure;
+            cmdSQL.Parameters.AddWithValue("@username", clsUser.Username);
+            cmdSQL.Parameters.AddWithValue("@password", clsUser.Password);
+            cmdSQL.Parameters.AddWithValue("@isAdmin", "2");
+
+
+            int result = 0;
+            try
+            {
+                if (cmdSQL.ExecuteNonQuery() >= 0)
+                {
+                    result = 1;
+                }
+
+            }
+            catch
+            {
+                result = 0;
+            }
+
+            return result;
+        }
     }
 }
