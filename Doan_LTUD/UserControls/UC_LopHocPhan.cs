@@ -101,5 +101,7 @@ namespace Doan_LTUD.UserControls
             this.Parent.Controls.Add(uC);
             this.Parent.Controls.Remove(this);
         }
+
+        
     }
 }
