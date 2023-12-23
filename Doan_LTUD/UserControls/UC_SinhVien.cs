@@ -1,4 +1,5 @@
 ﻿using BLL;
+using Doan_LTUD.report;
 using DTO;
 using System;
 using System.Collections.Generic;
@@ -55,7 +56,8 @@ namespace Doan_LTUD.UserControls
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            frmInDanhSach frmInDanhSach = new frmInDanhSach();
+            frmInDanhSach.ShowDialog();
         }
 
         private void txtTimKiem_TextChanged(object sender, EventArgs e)
