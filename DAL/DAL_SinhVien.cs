@@ -55,6 +55,19 @@ namespace DAL
             iKetQua = cmdSQL.ExecuteNonQuery();
             return iKetQua;
         }
+        public int resetIDTableSinhVien(int ID)
+        {
+            int iKetQua;
+            string tenSP = "sp_resetID";
+
+            SqlCommand cmdSQL = new SqlCommand(tenSP, conn);
+            cmdSQL.CommandType = CommandType.StoredProcedure;
+            cmdSQL.Parameters.AddWithValue("@ID", ID);
+
+
+            iKetQua = cmdSQL.ExecuteNonQuery();
+            return iKetQua;
+        }
         public int addSinhVien(clsSinhVien sinhVien)
         {
             string tenSP = "sp_addSinhVien";

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using DTO;
 using DAL;
 using System.Data;
+using System.Data.SqlClient;
 
 namespace BLL
 {
@@ -53,5 +54,19 @@ namespace BLL
             clsUser user  =  new clsUser(sTenDangNhap,sMatKhau);
             return dal_User.createUser(user);
         }
+        public int deleteUser( string MASV)
+        {
+            int iKetQua = 0;
+            try
+            {
+                iKetQua = dal_User.deleteUser(MASV);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return iKetQua;
+        }
+
     }
 }

@@ -69,6 +69,13 @@ namespace GUI
                 txtTenDangNhap.Text = "";
                 txtMatKhau.Text = "";
                 txtTenDangNhap.Focus();
+                this.Visible = false;
+                frmUser frmUser = new frmUser();
+                //Truyền id của user qua form frmadmin
+                frmUser.User_id = user;
+                frmUser.Show();
+                //Hàm FormClosed khi tắt frmAdmin lệnh này sẽ được gọi
+                frmUser.FormClosed += new FormClosedEventHandler(MyFrom_FormClose);
             }
             else if(bll_user.login(user) == 3)
             {

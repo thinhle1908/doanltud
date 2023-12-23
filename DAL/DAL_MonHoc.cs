@@ -84,5 +84,20 @@ namespace DAL
 
             return result;
         }
+        public DataTable getMonHocByNganhHoc(string sMaNganh)
+        {
+            DataTable dtUser = new DataTable();
+            SqlDataAdapter daUser;
+            string tenSP = "sp_getallMonHocByNganh";
+
+            SqlCommand cmdSQL = new SqlCommand(tenSP, conn);
+            cmdSQL.CommandType = CommandType.StoredProcedure;
+            cmdSQL.Parameters.AddWithValue("@MANGANH", sMaNganh);
+
+
+            daUser = new SqlDataAdapter(cmdSQL);
+            daUser.Fill(dtUser);
+            return dtUser;
+        }
     }
 }

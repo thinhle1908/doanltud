@@ -20,6 +20,7 @@ namespace Doan_LTUD.UserControls
         }
 
         BLL_SINHVIEN bllSinhVien = new BLL_SINHVIEN();
+        BLL_User bLL_User = new BLL_User();
         private void UC_SinhVien_Load(object sender, EventArgs e)
         {
             
@@ -75,15 +76,17 @@ namespace Doan_LTUD.UserControls
 
             string masv = dataGridView1.Rows[iDong].Cells["MASV"].Value.ToString();
             string hoten = dataGridView1.Rows[iDong].Cells["HO"].Value.ToString()+" "+ dataGridView1.Rows[iDong].Cells["TEN"].Value.ToString();
+            int id = int.Parse(dataGridView1.Rows[iDong].Cells["id"].Value.ToString());
             DialogResult r = MessageBox.Show($"Bạn có muốn xóa sinh viên {hoten}\ncó mã là {masv}này không ?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
             if (r == DialogResult.Yes)
             {
-                if (bllSinhVien.deleteSinhVien(dataGridView1.Rows[iDong].Cells["MASV"].Value.ToString()) == 0)
+                if (bllSinhVien.deleteSinhVien(id,dataGridView1.Rows[iDong].Cells["MASV"].Value.ToString()) == 0)
                 {
                     MessageBox.Show("Có lỗi trong quá trình xóa sinh viên vui lòng kiểm tra lại dữ liệu");
                 }
                 else
                 {
+                    bLL_User.deleteUser(masv);
                     MessageBox.Show("Xóa sinh viên thành công");
                 }
 
@@ -143,5 +146,39 @@ namespace Doan_LTUD.UserControls
             btnSua.PerformClick();
         }
 
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

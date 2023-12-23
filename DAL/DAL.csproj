@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="connectDB.cs" />
+    <Compile Include="DAL_LopHocPhan.cs" />
     <Compile Include="DAL_MonHoc.cs" />
     <Compile Include="DAL_NGANH.cs" />
     <Compile Include="DAL_SinhVien.cs" />

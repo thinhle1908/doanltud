@@ -42,5 +42,11 @@ namespace BLL
         {
             return dal_monhoc.addMonHoc(monHoc);
         }
+        public DataTable getMonHocByNganhHoc(string sMaNganh)
+        {
+            DataTable dt = new DataTable();
+            dt = dal_monhoc.getMonHocByNganhHoc(sMaNganh);
+            return dt;
+        }
     }
 }

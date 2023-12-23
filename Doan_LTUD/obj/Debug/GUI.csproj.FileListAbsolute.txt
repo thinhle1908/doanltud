@@ -23,3 +23,13 @@ C:\Users\thinh\source\repos\Doan_LTUD\Doan_LTUD\obj\Debug\Doan_LTUD.UserControls
 C:\Users\thinh\source\repos\Doan_LTUD\Doan_LTUD\obj\Debug\Doan_LTUD.UserControls.UC_AddMonHoc.resources
 C:\Users\thinh\source\repos\Doan_LTUD\Doan_LTUD\obj\Debug\Doan_LTUD.UserControls.UC_EditMonHoccs.resources
 C:\Users\thinh\source\repos\Doan_LTUD\Doan_LTUD\obj\Debug\Doan_LTUD.UserControls.UC_MonHoc.resources
+C:\Users\thinh\source\repos\Doan_LTUD\Doan_LTUD\bin\Debug\frmAdmin.resx
+C:\Users\thinh\source\repos\Doan_LTUD\Doan_LTUD\bin\Debug\frmAdmin.cs
+C:\Users\thinh\source\repos\Doan_LTUD\Doan_LTUD\bin\Debug\frmAdmin.Designer.cs
+C:\Users\thinh\source\repos\Doan_LTUD\Doan_LTUD\obj\Debug\Doan_LTUD.frmUser.resources
+C:\Users\thinh\source\repos\Doan_LTUD\Doan_LTUD\bin\Debug\frmUser.resx
+C:\Users\thinh\source\repos\Doan_LTUD\Doan_LTUD\bin\Debug\frmUser.cs
+C:\Users\thinh\source\repos\Doan_LTUD\Doan_LTUD\bin\Debug\frmUser.Designer.cs
+C:\Users\thinh\source\repos\Doan_LTUD\Doan_LTUD\obj\Debug\Doan_LTUD.UserControls.UC_LopHocPhan.resources
+C:\Users\thinh\source\repos\Doan_LTUD\Doan_LTUD\obj\Debug\Doan_LTUD.UserControls.UC_AddLopHocPhan.resources
+C:\Users\thinh\source\repos\Doan_LTUD\Doan_LTUD\obj\Debug\Doan_LTUD.UserControls.UC_EditLopHocPhan.resources

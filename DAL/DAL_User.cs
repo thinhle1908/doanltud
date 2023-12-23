@@ -53,5 +53,17 @@ namespace DAL
 
             return result;
         }
+        public int deleteUser(string sMaSinhVien)
+        {
+            int iKetQua;
+            string tenSP = "sp_deleteUser";
+
+            SqlCommand cmdSQL = new SqlCommand(tenSP, conn);
+            cmdSQL.CommandType = CommandType.StoredProcedure;
+            cmdSQL.Parameters.AddWithValue("@username", sMaSinhVien);
+
+            iKetQua = cmdSQL.ExecuteNonQuery();
+            return iKetQua;
+        }
     }
 }

@@ -30,6 +30,7 @@ namespace Doan_LTUD.UserControls
             dataGridView2.Columns[3].HeaderText = "Học Kỳ";
             dataGridView2.Columns[4].HeaderText = "Số Tiền";
             dataGridView2.Columns[5].HeaderText = "Mã Khoa";
+            dataGridView2.Columns[5].HeaderText = "Mã Ngành";
         }
 
         private void txtTimKiem_TextChanged(object sender, EventArgs e)

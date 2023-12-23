@@ -13,6 +13,7 @@ namespace BLL
     public class BLL_SINHVIEN
     {
         DAL_SinhVien dal_sinhvien = new DAL_SinhVien();
+        
         public DataTable getSinhVien()
         {
             DataTable dt = new DataTable();
@@ -25,12 +26,18 @@ namespace BLL
             dt = dal_sinhvien.searchSinhVien(sKeyWord);
             return dt;
         }
-        public int deleteSinhVien(string MASV)
+        public int deleteSinhVien(int id,string MASV)
         {
             int iKetQua = 0;
             try
             {
-                iKetQua = dal_sinhvien.deleteSinhVien( MASV);
+                DataTable lastID = dal_sinhvien.getLastIDSinhVien();
+                iKetQua = dal_sinhvien.deleteSinhVien(MASV);
+                if (id == int.Parse(lastID.Rows[0]["id"].ToString())) 
+                {
+                    dal_sinhvien.resetIDTableSinhVien(id - 1);
+                }
+                
             }
             catch (Exception ex) 
             {

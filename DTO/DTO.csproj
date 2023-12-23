@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clsLopHocPhan.cs" />
     <Compile Include="clsNganh.cs" />
     <Compile Include="clsSinhVien.cs" />
     <Compile Include="clssMonHoc.cs" />

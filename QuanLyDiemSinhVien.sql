@@ -5,7 +5,7 @@ USE QuanLyDiemSinhVien;
 GO
 
 CREATE TABLE USERS (
-	user_id int IDENTITY NOT NULL,
+	id int IDENTITY NOT NULL,
 	username NVARCHAR (30) NOT NULL UNIQUE,
 	password NVARCHAR(250) NOT NULL,
 	isAdmin INT NOT NULL
@@ -27,10 +27,9 @@ CREATE TABLE SINHVIEN(
 	KHOAHOC INT NOT NULL,
 	MANGANH CHAR(6)
 
-	PRIMARY KEY(MASV)
+	PRIMARY KEY(id,MASV)
 );
 GO
-
 CREATE TABLE NGANH (
 	MANGANH CHAR (6) NOT NULL,
 	TENNGANH NVARCHAR (250) NOT NULL,
@@ -39,18 +38,64 @@ CREATE TABLE NGANH (
 GO
 
 CREATE TABLE LOPHOCPHAN (
+	id int IDENTITY NOT NULL,
 	MAMH CHAR(12) NOT NULL,
 	MALOP CHAR(12) NOT NULL,
-	TENLOP CHAR(12) NOT NULL,
+	TENGIANGVIEN NVARCHAR(250) NOT NULL,
 	PHONGHOC NVARCHAR (250),
-	LICHHOC DATETIME,
 	NGAYBATDAU  DATETIME,
 	NGAYKETTHUC  DATETIME,
-	SOLUONGSINHVIEN INT
+	SOLUONGSINHVIEN INT,
 	PRIMARY KEY (MALOP)
 );
 GO
+CREATE PROC sp_addLopHocPhan(
+	@MAMH CHAR(12) ,
+	@MALOP CHAR(12) ,
+	@TENGIANGVIEN NVARCHAR(250),
+	@PHONGHOC NVARCHAR (250),
+	@NGAYBATDAU  DATETIME,
+	@NGAYKETTHUC  DATETIME,
+	@SOLUONGSINHVIEN INT
+)
+AS
+INSERT INTO LOPHOCPHAN(MAMH,MALOP,TENGIANGVIEN,PHONGHOC,NGAYBATDAU,NGAYKETTHUC,SOLUONGSINHVIEN)
+VALUES (@MAMH,@MALOP,@TENGIANGVIEN,@PHONGHOC,@NGAYBATDAU,@NGAYKETTHUC,@SOLUONGSINHVIEN)
+GO
 
+CREATE PROC sp_editLopHocPhan(
+	@MALOP CHAR(12) ,
+	@TENGIANGVIEN NVARCHAR(250),
+	@PHONGHOC NVARCHAR (250),
+	@NGAYBATDAU  DATETIME,
+	@NGAYKETTHUC  DATETIME,
+	@SOLUONGSINHVIEN INT
+)
+AS
+UPDATE LOPHOCPHAN
+SET TENGIANGVIEN = @TENGIANGVIEN, PHONGHOC = @PHONGHOC,NGAYBATDAU = @NGAYBATDAU,NGAYKETTHUC = @NGAYKETTHUC,SOLUONGSINHVIEN = @SOLUONGSINHVIEN)
+WHERE MALOP = @MALOP
+GO
+
+CREATE PROC sp_getAllLop
+AS
+SELECT * FROM LOPHOCPHAN
+ORDER BY LOPHOCPHAN.id DESC
+GO
+
+CREATE PROC sp_searchLopHocPhan(
+	@TEN NVARCHAR (250) 
+)
+AS
+select * from LOPHOCPHAN
+WHERE LOPHOCPHAN.MAMH LIKE '%' + @TEN + '%' OR LOPHOCPHAN.MALOP LIKE '%' + @TEN + '%' OR LOPHOCPHAN.TENGIANGVIEN LIKE '%' + @TEN + '%'
+GO
+
+CREATE PROC sp_deleteLopHocPhan(
+ 	@MALOP CHAR(12) 
+)
+AS
+DELETE FROM LOPHOCPHAN WHERE LOPHOCPHAN.MALOP = @MALOP
 CREATE TABLE USERS_SINHVIEN(
 	user_id  int NOT NULL,
 	MASV CHAR (6) NOT NULL,
@@ -74,6 +119,13 @@ CREATE PROC sp_createUser(
 AS
 INSERT INTO USERS(username,password,isAdmin)
 VALUES (@username,@password,@isAdmin)
+GO
+
+CREATE PROC sp_deleteUser(
+	@username NVARCHAR(30)
+)
+AS
+DELETE FROM USERS WHERE USERS.username = @username
 GO
 
 CREATE PROC sp_addSinhVien(
@@ -178,11 +230,17 @@ DELETE FROM SINHVIEN WHERE MASV =@MASV
 GO
 select * from sinhvien
 
+/*Reset id tự động tăng*/
+CREATE PROC sp_resetID(
+	@ID int
+)
+AS
+DBCC CHECKIDENT("SINHVIEN", RESEED, @ID)
+GO
 
 /*drop ; */
 
 /* DROP table sinhvien  */
-exec sp_deletesinhvien '2311cboChuye'
 /* Mon Hoc*/
 CREATE TABLE MONHOC
 (
@@ -192,13 +250,23 @@ NIENKHOA INT NOT NULL,
 HOCKY INT NOT NULL,
 SOTIEN INT NOT NULL,
 MAKHOA CHAR(6) NOT NULL,
-MANGANH CHAR(6) NULL
+MANGANH CHAR(6) NULL,
+PRIMARY KEY(MAMH)
+
 );
 GO
 
 CREATE PROC sp_getallMonHoc
 AS
 SELECT * FROM MONHOC
+GO
+
+CREATE PROC sp_getAllMonHocByNganh(
+	@MANGANH CHAR(6)
+)
+AS 
+SELECT * FROM MONHOC
+WHERE MONHOC.MANGANH = @MANGANH
 GO
 
 CREATE PROC sp_searchMonHoc
@@ -240,4 +308,46 @@ exec sp_addMonHoc 'MH001',N'Lập trình ứng dụng 1','2023','1','10000','CNT
 exec sp_addMonHoc 'MH002',N'Kiểm thử phần mềm','2023','1','10000','CNTT','TT';
 exec sp_addMonHoc 'MH003',N'Lập trình java','2023','1','10000','CNTT','TT';
 
-SELECT * FROM USERS
+exec sp_addMonHoc 'MH004',N'Xử lý ảnh','2023','1','10000','CNTT','DH';
+exec sp_addMonHoc 'MH005',N'Xử lý phim','2023','1','10000','CNTT','DH';
+exec sp_addMonHoc 'MH006',N'Nhiếp ảnh','2023','1','10000','CNTT','DH';
+
+exec sp_addMonHoc 'MH007',N'Kinh tế vĩ mô','2023','1','10000','CNTT','QT';
+exec sp_addMonHoc 'MH008',N'Nghiên cứu thị trường','2023','1','10000','CNTT','QT';
+exec sp_addMonHoc 'MH009',N'Quản lý chuỗi cung ứng','2023','1','10000','CNTT','QT';
+
+exec sp_addMonHoc 'MH0010',N'Quản trị linux','2023','1','10000','CNTT','MT';
+exec sp_addMonHoc 'MH0011',N'Bảo mật mạng','2023','1','10000','CNTT','MT';
+exec sp_addMonHoc 'MH0012',N'Lập trình Python','2023','1','10000','CNTT','MT';
+
+exec sp_addMonHoc 'MH0013',N'Kỹ thuật số','2023','1','10000','CNTT','DT';
+exec sp_addMonHoc 'MH0014',N'Vi  điều  khiển','2023','1','10000','CNTT','DT';
+exec sp_addMonHoc 'MH0015',N'Thông  tin  vệ tinh','2023','1','10000','CNTT','DT';
+
+exec sp_addLopHocPhan 'MH001','LH001',N'Nguyễn Văn Huy',N'B202','12/22/2023','4/5/2024',60
+exec sp_addLopHocPhan 'MH002','LH002',N'Nguyễn Văn Huy',N'B202','12/22/2023','4/5/2024',60
+exec sp_addLopHocPhan 'MH003','LH003',N'Nguyễn Văn Huy',N'B202','12/22/2023','4/5/2024',60
+
+exec sp_addLopHocPhan 'MH004','LH004',N'Trương Anh Tuấn',N'B202','12/22/2023','4/5/2024',60
+exec sp_addLopHocPhan 'MH005','LH005',N'Trương Anh Tuấn',N'B202','12/22/2023','4/5/2024',60
+exec sp_addLopHocPhan 'MH006','LH006',N'Trương Anh Tuấn',N'B202','12/22/2023','4/5/2024',60
+
+exec sp_addLopHocPhan 'MH007','LH007',N'Hoàng Văn Phát',N'B202','12/22/2023','4/5/2024',60
+exec sp_addLopHocPhan 'MH008','LH008',N'Hoàng Văn Phát',N'B202','12/22/2023','4/5/2024',60
+exec sp_addLopHocPhan 'MH009','LH009',N'Hoàng Văn Phát',N'B202','12/22/2023','4/5/2024',60
+
+exec sp_addLopHocPhan 'MH010','LH010',N'Phương Thị Mỹ Lan',N'B202','12/22/2023','4/5/2024',60
+exec sp_addLopHocPhan 'MH011','LH011',N'Phương Thị Mỹ Lan',N'B202','12/22/2023','4/5/2024',60
+exec sp_addLopHocPhan 'MH012','LH012',N'Phương Thị Mỹ Lan',N'B202','12/22/2023','4/5/2024',60
+
+exec sp_addLopHocPhan 'MH013','LH013',N'Nguyễn Thị Hồng',N'B202','12/22/2023','4/5/2024',60
+exec sp_addLopHocPhan 'MH014','LH014',N'Nguyễn Thị Hồng',N'B202','12/22/2023','4/5/2024',60
+exec sp_addLopHocPhan 'MH015','LH015',N'Nguyễn Thị Hồng',N'B202','12/22/2023','4/5/2024',60
+
+exec sp_addLopHocPhan 'MH016','LH016',N'Tạ Anh Khôi',N'B202','12/22/2023','4/5/2024',60
+exec sp_addLopHocPhan 'MH017','LH017',N'Tạ Anh Khôi',N'B202','12/22/2023','4/5/2024',60
+exec sp_addLopHocPhan 'MH018','LH018',N'Tạ Anh Khôi',N'B202','12/22/2023','4/5/2024',60
+
+
+select * from SINHVIEN
+select * from users
