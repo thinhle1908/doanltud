@@ -49,6 +49,7 @@ namespace Doan_LTUD.UserControls
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
+            /* Lưu ý muốn sử dụng hàm này phải thêm một dữ liệu môn học mới nếu không khi xóa môn học trong lớp học phàn sẽ bị lỗi
             int iDong = int.Parse(dataGridView2.SelectedRows[0].Index.ToString());
 
 
@@ -74,6 +75,7 @@ namespace Doan_LTUD.UserControls
 
                 dataGridView2.DataSource = bllMonHoc.getMonHoc();
             }
+            */
         }
 
         private void btnSua_Click(object sender, EventArgs e)
