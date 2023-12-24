@@ -50,3 +50,4 @@ C:\Users\thinh\source\repos\Doan_LTUD\Doan_LTUD\bin\Debug\CrystalDecisions.Repor
 C:\Users\thinh\source\repos\Doan_LTUD\Doan_LTUD\bin\Debug\CrystalDecisions.ReportAppServer.CommonControls.dll
 C:\Users\thinh\source\repos\Doan_LTUD\Doan_LTUD\bin\Debug\CrystalDecisions.Windows.Forms.dll
 C:\Users\thinh\source\repos\Doan_LTUD\Doan_LTUD\obj\Debug\Doan_LTUD.report.frmInDanhSach.resources
+C:\Users\thinh\source\repos\Doan_LTUD\Doan_LTUD\obj\Debug\Doan_LTUD.UserControls.UC_ChangePassword.resources

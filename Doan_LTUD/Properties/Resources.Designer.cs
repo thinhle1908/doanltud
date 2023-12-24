@@ -63,9 +63,29 @@ namespace Doan_LTUD.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap eyefix3 {
+            get {
+                object obj = ResourceManager.GetObject("eyefix3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap FIT_TDC_logo {
             get {
                 object obj = ResourceManager.GetObject("FIT-TDC_logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap noeye5 {
+            get {
+                object obj = ResourceManager.GetObject("noeye5", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

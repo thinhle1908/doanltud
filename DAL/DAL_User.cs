@@ -65,5 +65,30 @@ namespace DAL
             iKetQua = cmdSQL.ExecuteNonQuery();
             return iKetQua;
         }
+        public int changePassword(clsUser user)
+        {
+            string tenSP = "sp_changepassword";
+
+            SqlCommand cmdSQL = new SqlCommand(tenSP, conn);
+            cmdSQL.CommandType = CommandType.StoredProcedure;
+            cmdSQL.Parameters.AddWithValue("@username", user.Username);
+            cmdSQL.Parameters.AddWithValue("@password", user.Password);
+
+            int result = 0;
+            try
+            {
+                if (cmdSQL.ExecuteNonQuery() >= 0)
+                {
+                    result = 1;
+                }
+
+            }
+            catch
+            {
+                result = 0;
+            }
+
+            return result;
+        }
     }
 }

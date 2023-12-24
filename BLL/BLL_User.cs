@@ -67,6 +67,18 @@ namespace BLL
             }
             return iKetQua;
         }
+        public int changePassword(string username,string oldpassword,string newpassword)
+        {
+            clsUser user = new clsUser(username.Trim(), oldpassword.Trim());
+            DataTable dt = new DataTable();
+            dt = dal_User.login(user);
+            if (dt.Rows.Count > 0)
+            {
+                user.Password = newpassword;
+                return dal_User.changePassword(user);
+            }
+            return 2;
+        }
 
     }
 }

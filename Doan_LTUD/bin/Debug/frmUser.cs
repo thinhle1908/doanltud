@@ -36,11 +36,8 @@ namespace Doan_LTUD
 
         private void button4_Click(object sender, EventArgs e)
         {
-            DialogResult r = MessageBox.Show("Bạn có muốn đăng xuất không ?","Đăng xuất" ,MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
-            if (r == DialogResult.Yes)
-            {
-               this.Close();
-            }
+            UC_ChangePassword uc = new UC_ChangePassword(this.User_id.Username);
+            addUserControl(uc);
         }
 
         private void btnHome_Click(object sender, EventArgs e)
@@ -69,6 +66,15 @@ namespace Doan_LTUD
         {
             UC_MonHoc uc = new UC_MonHoc();
             addUserControl(uc);
+        }
+
+        private void btnThoat_Click(object sender, EventArgs e)
+        {
+            DialogResult r = MessageBox.Show("Bạn có muốn đăng xuất không ?", "Đăng xuất", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+            if (r == DialogResult.Yes)
+            {
+                this.Close();
+            }
         }
     }
 }

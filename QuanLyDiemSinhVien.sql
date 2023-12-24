@@ -128,6 +128,16 @@ AS
 DELETE FROM USERS WHERE USERS.username = @username
 GO
 
+CREATE PROC sp_changepassword(
+	@username NVARCHAR (30),
+	@password NVARCHAR(250)
+)
+AS
+UPDATE USERS
+SET USERS.password = @password
+WHERE USERS.username = @username
+GO
+
 CREATE PROC sp_addSinhVien(
 	@MASV CHAR (12) ,
 	@HO NVARCHAR (250) ,

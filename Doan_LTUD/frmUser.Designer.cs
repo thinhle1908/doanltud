@@ -88,7 +88,7 @@
             btnThoat.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             btnThoat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             btnThoat.UseVisualStyleBackColor = false;
-            btnThoat.Click += new System.EventHandler(this.button4_Click);
+            btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
             // button3
             // 
@@ -140,6 +140,24 @@
             btnHome.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             btnHome.UseVisualStyleBackColor = false;
             btnHome.Click += new System.EventHandler(this.btnHome_Click);
+            // 
+            // button2
+            // 
+            button2.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
+            button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            button2.FlatAppearance.BorderSize = 0;
+            button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            button2.ForeColor = System.Drawing.Color.WhiteSmoke;
+            button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
+            button2.Location = new System.Drawing.Point(0, 659);
+            button2.Name = "button2";
+            button2.Size = new System.Drawing.Size(356, 105);
+            button2.TabIndex = 6;
+            button2.Text = "Đổi mật khẩu";
+            button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            button2.UseVisualStyleBackColor = false;
+            button2.Click += new System.EventHandler(this.button4_Click);
             // 
             // panel1
             // 
@@ -233,24 +251,6 @@
             this.panelContainer.Name = "panelContainer";
             this.panelContainer.Size = new System.Drawing.Size(1241, 900);
             this.panelContainer.TabIndex = 1;
-            // 
-            // button2
-            // 
-            button2.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
-            button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            button2.FlatAppearance.BorderSize = 0;
-            button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            button2.ForeColor = System.Drawing.Color.WhiteSmoke;
-            button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            button2.Location = new System.Drawing.Point(0, 659);
-            button2.Name = "button2";
-            button2.Size = new System.Drawing.Size(356, 105);
-            button2.TabIndex = 6;
-            button2.Text = "Đổi mật khẩu";
-            button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            button2.UseVisualStyleBackColor = false;
-            button2.Click += new System.EventHandler(this.button4_Click);
             // 
             // frmUser
             // 
