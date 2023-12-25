@@ -58,14 +58,12 @@ namespace Doan_LTUD
 
         private void button1_Click(object sender, EventArgs e)
         {
-            UC_SinhVien uc = new UC_SinhVien();
-            addUserControl(uc);
+            
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            UC_MonHoc uc = new UC_MonHoc();
-            addUserControl(uc);
+           
         }
 
         private void btnThoat_Click(object sender, EventArgs e)
@@ -75,6 +73,11 @@ namespace Doan_LTUD
             {
                 this.Close();
             }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
